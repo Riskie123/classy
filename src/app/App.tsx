@@ -10,6 +10,7 @@ import { useLanguageFromURL } from '@/hooks/useLanguageFromURL';
 import { StoreProvider } from '@/hooks/useStore';
 import { isPreviewMode, PREVIEW_BASE_PATH } from '@/utils/is-preview-mode';
 import { localize, TranslationProvider } from '@deriv-com/translations';
+import AnimatedPopup from '@/components/AnimatedPopup';
 import CoreStoreProvider from './CoreStoreProvider';
 import i18nInstance from './i18n';
 import './app-root.scss';
@@ -113,7 +114,16 @@ function App() {
         handleCallback();
     }, []);
 
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <AnimatedPopup 
+                title="classictrades.site"
+                message="Start automating your trades today with our powerful trading bot."
+                autoCloseDuration={5000}
+            />
+            <RouterProvider router={router} />
+        </>
+    );
 }
 
 export default App;
